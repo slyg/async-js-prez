@@ -1,0 +1,18 @@
+// Service
+module.exports = async function getSuggestions() {
+  const books = await request(router.get('BOOKS'));
+  const genres = await request(router.get('GENRES'));
+  // ... compute some stuff -> suggestions
+  return suggestions;
+};
+
+// Controller
+exports.main = function booksSuggestionsController(req, res, next){
+  try {
+    render({
+      suggestions : await getSuggestions() // could return a promise too
+    });
+  } catch (e) {
+    next(e);
+  }
+};

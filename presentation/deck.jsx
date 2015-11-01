@@ -12,7 +12,8 @@ import Interactive from "./interactive";
 const images = {
   city: require("./city.jpg"),
   kat: require("./kat.png"),
-  logo: require("./formidable-logo.svg")
+  logo: require("./formidable-logo.svg"),
+  loop: require("./loop.png")
 };
 
 preloader([images.city, images.kat]);
@@ -20,102 +21,143 @@ preloader([images.city, images.kat]);
 export default class extends React.Component {
   render() {
     return (
-      <Deck transition={["zoom", "slide"]} transitionDuration={800}>
-        <Slide transition={["zoom"]} bgColor="primary">
-          <Heading size={1} fit caps lineHeight={1} textColor="black">
-            Spectacle
-          </Heading>
-          <Heading size={1} fit caps>
-            A ReactJS Presentation Library
-          </Heading>
-          <Heading size={1} fit caps textColor="black">
-            Where You Can Write Your Decks In JSX
-          </Heading>
-          <Link href="https://github.com/FormidableLabs/spectacle">
-            <Text bold caps textColor="tertiary">View on Github</Text>
-          </Link>
-          <Text textSize="1.5em" margin="20px 0px 0px" bold>Hit Your Right Arrow To Begin!</Text>
+      <Deck>
+
+        <Slide transition={["slide"]}>
+          <Heading size={1}>Async JS</Heading>
         </Slide>
-        <Slide transition={["slide"]} bgColor="black" notes="You can even put notes on your slide. How awesome is that?">
-          <Image src={images.kat.replace("/", "")} margin="0px auto 40px" height="293px"/>
-          <Heading size={1} fit textColor="primary" textFont="secondary">
-            Wait what?
-          </Heading>
-        </Slide>
-        <Slide transition={["zoom", "fade"]} bgColor="primary" notes="<ul><li>talk about that</li><li>and that</li></ul>">
-          <CodePane
-            lang="javascript"
-            source={require("raw!./deck.example")}
-            margin="20px auto"/>
-        </Slide>
-        <Slide transition={["slide"]} bgImage={images.city.replace("/", "")} bgDarken={0.75}>
-          <Appear fid="1">
-            <Heading size={1} caps fit textColor="primary">
-              Full Width
-            </Heading>
-          </Appear>
-          <Appear fid="2">
-            <Heading size={1} caps fit textColor="tertiary">
-              Adjustable Darkness
-            </Heading>
-          </Appear>
-          <Appear fid="3">
-            <Heading size={1} caps fit textColor="primary">
-              Background Imagery
-            </Heading>
-          </Appear>
-        </Slide>
-        <Slide transition={["zoom", "fade"]} bgColor="primary">
-          <Heading caps fit>Flexible Layouts</Heading>
-          <Layout>
-            <Fill>
-              <Heading size={4} caps textColor="secondary" bgColor="white" margin={10}>
-                Left
-              </Heading>
-            </Fill>
-            <Fill>
-              <Heading size={4} caps textColor="secondary" bgColor="white" margin={10}>
-                Right
-              </Heading>
-            </Fill>
-          </Layout>
-        </Slide>
-        <Slide transition={["slide"]} bgColor="black">
-          <BlockQuote>
-            <Quote>Wonderfully formatted quotes</Quote>
-            <Cite>Ken Wheeler</Cite>
-          </BlockQuote>
-        </Slide>
-        <Slide transition={["slide", "spin"]} bgColor="primary">
-          <Heading caps fit size={1} textColor="tertiary">
-            Smooth
-          </Heading>
-          <Heading caps fit size={1} textColor="secondary">
-            Combinable Transitions
-          </Heading>
-        </Slide>
-        <Slide transition={["fade"]} bgColor="secondary" textColor="primary">
-          <List>
-            <ListItem><Appear fid="1">Inline style based theme system</Appear></ListItem>
-            <ListItem><Appear fid="2">Autofit text</Appear></ListItem>
-            <ListItem><Appear fid="3">Flexbox layout system</Appear></ListItem>
-            <ListItem><Appear fid="4">React-Router navigation</Appear></ListItem>
-            <ListItem><Appear fid="5">PDF export</Appear></ListItem>
-            <ListItem><Appear fid="6">And...</Appear></ListItem>
+
+        <Slide transition={["slide"]}>
+          <Heading>Summary</Heading>
+          <List margin="30px auto auto 25%">
+            <ListItem>Event-loop</ListItem>
+            <ListItem>Sugar patterns</ListItem>
           </List>
         </Slide>
-        <Slide transition={["slide"]} bgColor="primary">
-          <Heading size={1} caps fit textColor="tertiary">
-            Your presentations are interactive
-          </Heading>
-          <Interactive/>
+
+        <Slide transition={["slide"]}>
+          <Heading size={2}>Async JS ?</Heading>
+          <Text>JS, Event-loop and Threads</Text>
         </Slide>
-        <Slide transition={["spin", "slide"]} bgColor="tertiary">
-          <Heading size={1} caps fit lineHeight={1.5} textColor="primary">
-            Made with love in Seattle by
-          </Heading>
-          <Link href="http://www.formidablelabs.com"><Image width="100%" src={images.logo}/></Link>
+
+        <Slide transition={["slide"]}>
+          <List>
+            <ListItem>main event-loop</ListItem>
+            <ListItem>stack / queue</ListItem>
+            <ListItem>automatic (safe) threads (e.g. fs, net, etc.)</ListItem>
+          </List>
         </Slide>
+
+        <Slide transition={["slide"]}>
+          <Image src={images.loop.replace("/", "")} height="470px"/>
+        </Slide>
+
+        <Slide transition={["slide"]}>
+          <Link href="http://latentflip.com/loupe/?code=CmZ1bmN0aW9uIHB1c2hJblRpbWUodGltZSl7CiAgICBzZXRUaW1lb3V0KGZ1bmN0aW9uIHJldHVybkluZm8oKXsKICAgICAgICBjb25zb2xlLmxvZygnSmVhbicpOwogICAgfSwgdGltZSk7Cn0KCmZ1bmN0aW9uIGdldEluZm8odG9rZW4pewogICAgcHVzaEluVGltZSg1MDAwKQp9OwoKCmdldEluZm8oJ2czamRzcXhkaTQnKQpnZXRJbmZvKCdxeGRpNGczamRzJykKZ2V0SW5mbygncXhkaTRnM2pkcycp!!!">
+            <Text>Live sample (Loupe)</Text>
+          </Link>
+        </Slide>
+
+        <Slide transition={["slide"]} bgColor="secondary">
+          <BlockQuote margin="0">
+            <Quote>Everything runs in parrallel, except your code</Quote>
+            <Cite>Sic.</Cite>
+          </BlockQuote>
+        </Slide>
+
+        <Slide transition={["slide"]}>
+          <Heading size={2}>Sugar patterns</Heading>
+        </Slide>
+
+        <Slide transition={["slide"]}>
+          <List>
+            <ListItem>Callbacks</ListItem>
+            <ListItem>Async Library (lib)</ListItem>
+            <ListItem>Event Emitters, Dispatchers</ListItem>
+            <ListItem>Promises (ES6, lib) *</ListItem>
+            <ListItem>Generators (ES6) *</ListItem>
+            <ListItem>Async functions (ES7) *</ListItem>
+            <ListItem>Observables (ES7)</ListItem>
+          </List>
+        </Slide>
+
+        <Slide transition={["slide"]}>
+          <Heading size={3}>Promises</Heading>
+        </Slide>
+
+        <Slide transition={["slide"]} bgColor="secondary">
+          <BlockQuote>
+            <Quote textSize="3em">A promise represents the eventual result of an asynchronous operation</Quote>
+            <Cite>Promises/A+ specification</Cite>
+          </BlockQuote>
+        </Slide>
+
+        <Slide transition={["slide"]} bgColor="secondary">
+          <Heading size={4}>States</Heading>
+          <CodePane
+              source={require("raw!./promisesstate.txt")}
+              textSize="3em"
+              margin="2em 0 0 0"/>
+
+          <Link href="http://slyg.github.io/promises-limbo-presentation/#/4/3">
+            <Text textSize="1em">See more</Text>
+          </Link>
+        </Slide>
+
+        <Slide transition={["slide"]}>
+          <Heading size={3}>Generators</Heading>
+          <Text>`stuff*()`</Text>
+        </Slide>
+
+        <Slide transition={["slide"]}>
+          <List>
+            <ListItem>Iterators</ListItem>
+            <ListItem>Can maintain their state</ListItem>
+            <ListItem>Non blocking</ListItem>
+            <ListItem>Use of `yield` expression</ListItem>
+          </List>
+        </Slide>
+
+        <Slide transition={["slide"]} bgColor="secondary">
+          <CodePane
+              lang="javascript"
+              source={require("raw!./generator.example")}
+              margin="2em 0 0 0"/>
+          <Text textSize="1em" textColor="primary">NB: framework can iterate till done is true</Text>
+        </Slide>
+
+        <Slide transition={["slide"]}>
+          <Heading size={3}>Async Functions</Heading>
+          <Text>`stuff*()`</Text>
+        </Slide>
+
+        <Slide transition={["slide"]}>
+          <List>
+            <ListItem>Async code written in a sync way</ListItem>
+            <ListItem>Non blocking</ListItem>
+            <ListItem>Use of `async` functions</ListItem>
+          </List>
+        </Slide>
+
+        <Slide transition={["slide"]} bgColor="secondary">
+          <CodePane
+              lang="javascript"
+              source={require("raw!./asyncfn.example")}
+              margin="2em 0 0 0"/>
+        </Slide>
+
+        <Slide transition={["slide"]}>
+          <Heading size={3}>Wrap up</Heading>
+          <List>
+            <ListItem>JS exec is sync</ListItem>
+            <ListItem>JS for I/O only</ListItem>
+            <ListItem>nodeJS provides system bindings + event loop</ListItem>
+            <ListItem>Promises are OK</ListItem>
+            <ListItem>Stateless middleware to scale</ListItem>
+            <ListItem>W/ GraphQL / Falcor, async problem --> Trash</ListItem>
+          </List>
+        </Slide>
+
       </Deck>
     );
   }

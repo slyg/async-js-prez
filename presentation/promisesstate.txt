@@ -1,0 +1,3 @@
+pending	  : -
+fulfilled : any value
+rejected  : reason Object

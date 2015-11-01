@@ -1,0 +1,12 @@
+// Service
+module.exports = function* getSuggestions() {
+  const books = yield request(router.get('BOOKS'));
+  const genres = yield request(router.get('GENRES'));
+  // ... compute some stuff -> suggestions
+  return suggestions;
+};
+
+// Controller
+exports.main = function* booksSuggestionsController(){
+  this.body.suggestions = yield getSuggestions();
+};
